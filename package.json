@@ -1,0 +1,26 @@
+{
+  "name": "bitmap-transformer",
+  "version": "0.1.0",
+  "description": "Building a bitmap reader and transformer.",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lmcnern/bitmap-transformer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lmcnern/bitmap-transformer/issues"
+  },
+  "homepage": "https://github.com/lmcnern/bitmap-transformer",
+  "devDependencies": {
+    "chai": "^3.0.0",
+    "gulp": "^3.9.0",
+    "gulp-jshint": "^1.11.2",
+    "jshint-stylish": "^2.0.1",
+    "mocha": "^2.2.5"
+  }
+}
