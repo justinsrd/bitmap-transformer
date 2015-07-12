@@ -1,7 +1,7 @@
 'use strict'
 
 var fs = require('fs');
-var buf = fs.readFileSync('./img/non-palette-bitmap2.bmp');
+var buf = fs.readFileSync('./img/palette-bitmap.bmp');
 var startPoint, endPoint, eachPixel;
 
 //Detect palette bmp or non-palette bmp
@@ -47,12 +47,16 @@ function scaleOneColor(color) {
       buf.writeUInt8(255, i + 2);
     }
   }
-  fs.writeFileSync('./img/colorScaledFile.bmp', buf);
+  fs.writeFileSync('./img/' + color + 'ScaledFile.bmp', buf);
 }
 
 //Transform the file SELECT ONE
 //invertColors();
-greyScale();
+//greyScale();
 //scaleOneColor('blue');
 //scaleOneColor('green');
 //scaleOneColor('red');
+
+exports.invertColors = invertColors;
+exports.greyScale = greyScale;
+exports.scaleOneColor = scaleOneColor;
