@@ -1,36 +1,44 @@
 'use strict'
 
 var fs = require('fs');
-var buf = fs.readFileSync('non-palette-bitmap.bmp');
+var buf = fs.readFileSync('./img/non-palette-bitmap2.bmp');
+var startPoint, endPoint, eachPixel;
 
-var imageDataStart = buf.readUInt32LE(10);
+//Detect palette bmp or non-palette bmp
+if (buf.readUInt32LE(10) == 54) {
+  //non-palette bitmap
+  startPoint = buf.readUInt32LE(10);
+  endPoint = buf.length;
+  eachPixel = 3;
+} else {
+  //palette bitmap
+  startPoint = 54;
+  endPoint = buf.readUInt32LE(10);
+  eachPixel = 4;
+}
 
 //Invert all colors
 function invertColors() {
-  for (var i = imageDataStart; i < buf.length; i++) {
+  for (var i = startPoint; i < endPoint; i++) {
     buf.writeUInt8(255 - buf.readUInt8(i), i);
   }
+  fs.writeFileSync('./img/invertedFile.bmp', buf);
 }
 
 //Grayscale
 function greyScale() {
-  for (var i = imageDataStart; i < buf.length; i += 3){
+  for (var i = startPoint; i < endPoint; i += eachPixel){
     var grey = Math.floor((buf.readUInt8(i) + buf.readUInt8(i+1) + buf.readUInt8(i+2)) / 3);
     buf.writeUInt8(grey, i);
     buf.writeUInt8(grey, i + 1);
     buf.writeUInt8(grey, i + 2);
   }
+  fs.writeFileSync('./img/greyScaledFile.bmp', buf);
 }
 
 //Scale one color
 function scaleOneColor(color) {
-  for (var i = imageDataStart; i < buf.length; i += 3) {
-
-    var blue = buf.readUInt8(i);
-    var green = buf.readUInt8(i + 1);
-    var red = buf.readUInt8(i + 2);
-    var grey = Math.floor((blue + green + red) / 3);
-
+  for (var i = startPoint; i < endPoint; i += eachPixel) {
     if (color == 'blue') {
       buf.writeUInt8(255, i);
     } else if (color == 'green') {
@@ -39,17 +47,12 @@ function scaleOneColor(color) {
       buf.writeUInt8(255, i + 2);
     }
   }
+  fs.writeFileSync('./img/colorScaledFile.bmp', buf);
 }
 
 //Transform the file SELECT ONE
 //invertColors();
-//greyScale();
+greyScale();
 //scaleOneColor('blue');
-scaleOneColor('green');
+//scaleOneColor('green');
 //scaleOneColor('red');
-
-//Write buf to newFile.bmp
-fs.writeFileSync('newFile.bmp', buf);
-
-
-

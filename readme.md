@@ -1,10 +1,9 @@
 # Bitmap Transformer
-1. Opens file using fs and read it into a buffer.
 
-2. Converts buffer into a Javascript Object.
+1. Opens file using fs and reads it into a buffer.
 
-3. Runs a transform on that Javascript Object.
+2. Determins whether to transform palette data or image data.
 
-4. Turns the transformed object back into a buffer.
+3. Directly runs a transform on that section of the buffer.
 
-5. Writes that buffer to a new file.
+4. Writes that buffer to a new file.
