@@ -25,3 +25,5 @@
 ![Example 2 - Non-palette bmp](/img/examples/1.jpg)
 
 ![Example 3 - Palette bmp](/img/examples/3.jpg)
+
+Made by [Goutham Reddy](https://github.com/gouthamvreddy), [Dewey Luu](https://github.com/DeweyLuu), [Dylan Moberg](https://github.com/mobot11), [Lauren McNerney](https://github.com/lmcnern), and [Justin DeLuna](https://github.com/justinsrd).
