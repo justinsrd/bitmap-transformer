@@ -1,7 +1,7 @@
 'use strict'
 
 var fs = require('fs');
-var buf = fs.readFileSync('./img/palette-bitmap.bmp');
+var buf = fs.readFileSync('./img/non-palette-bitmap.bmp');
 var startPoint, endPoint, eachPixel;
 
 //Detect palette bmp or non-palette bmp
@@ -57,6 +57,7 @@ function scaleOneColor(color) {
 //scaleOneColor('green');
 //scaleOneColor('red');
 
+exports.buf = buf;
 exports.invertColors = invertColors;
 exports.greyScale = greyScale;
 exports.scaleOneColor = scaleOneColor;
