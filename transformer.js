@@ -23,6 +23,7 @@ function invertColors() {
     buf.writeUInt8(255 - buf.readUInt8(i), i);
   }
   fs.writeFileSync('./img/invertedFile.bmp', buf);
+  readMetadata();
 }
 
 //Grayscale
@@ -34,6 +35,7 @@ function greyScale() {
     buf.writeUInt8(grey, i + 2);
   }
   fs.writeFileSync('./img/greyScaledFile.bmp', buf);
+  readMetadata();
 }
 
 //Scale one color
@@ -48,7 +50,16 @@ function scaleOneColor(color) {
     }
   }
   fs.writeFileSync('./img/' + color + 'ScaledFile.bmp', buf);
+  readMetadata();
 }
+
+function readMetadata() {
+  console.log('File size is ' + Math.round(buf.readUInt32LE(2) / 1024) + 'kb.');
+  console.log('The width of the bitmap is ' + buf.readUInt32LE(18) + ' pixels.');
+  console.log('The height of the bitmap is ' + buf.readUInt32LE(22) + ' pixels.');
+  console.log('The color depth of the bitmap is ' + buf.readUInt32LE(28) + ' bits.');
+}
+
 
 //Transform the file SELECT ONE
 //invertColors();
