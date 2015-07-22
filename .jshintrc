@@ -1,0 +1,9 @@
+{
+  "node": true,
+  "globals": {
+    "describe": true,
+    "console": true,
+    "require": true,
+    "strict": true
+  }
+}
