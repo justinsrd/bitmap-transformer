@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 var fs = require('fs');
 var buf = fs.readFileSync('./img/non-palette-bitmap.bmp');
