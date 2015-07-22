@@ -53,5 +53,4 @@ describe('non-palette transformer', function() {
     }
   });
 
-
 });

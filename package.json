@@ -4,7 +4,7 @@
   "description": "Building a bitmap reader and transformer.",
   "main": "index.js",
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp"
   },
   "repository": {
     "type": "git",
